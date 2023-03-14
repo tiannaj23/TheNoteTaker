@@ -36,8 +36,8 @@ const newNote = {title, text, id: uuidv1()}
 return this.getNotes().then((notes) => [...notes, newNote]).then((updatedNotes) => this.write(updatedNotes)).then(() => newNote)
 }
 
-removeNote() {
-
+removeNote(id) {
+return this.getNotes().then((notes) => notes.filter((note) => note.id !== id)).then((filteredNotes) => this.write(filteredNotes))
 }
 }
 
